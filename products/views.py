@@ -7,13 +7,6 @@ from common.views import TitleMixin
 
 from .models import Basket, Product, ProductCategory
 
-# def index(request):
-#     context = {
-#         'title': 'Store',
-#         'is_promotion': True,
-#     }
-#     return render(request, 'products/index.html', context=context)
-
 
 class IndexView(TitleMixin, TemplateView):
     template_name = 'products/index.html'
@@ -23,20 +16,6 @@ class IndexView(TitleMixin, TemplateView):
         context = super(IndexView, self).get_context_data()
         context['is_promotion'] = True
         return context
-
-
-# def products(request, category_id=None, page_number=1):
-#     products = Product.objects.filter(category_id=category_id) if category_id else Product.objects.all()
-#
-#     paginator = Paginator(products, per_page=3)
-#     products_paginator = paginator.page(page_number)
-#
-#     context = {
-#         'title': 'Store - Каталог',
-#         'categories': ProductCategory.objects.all(),
-#         'products': products_paginator,
-#     }
-#     return render(request, 'products/products.html', context=context)
 
 
 class ProductsListView(TitleMixin, ListView):
